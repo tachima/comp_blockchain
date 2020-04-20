@@ -1,0 +1,3 @@
+//pdfにする
+java -jar JS view -i test.spn > test.dot
+dot -Tpdf -o test.pdf test.dot	//ここでエラー

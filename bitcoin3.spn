@@ -1,0 +1,90 @@
+/*
+  bitcoin
+*/
+
+maxblk = 5
+
+place PblkA
+place PconfirmA
+
+place PblkB
+place PconfirmB
+
+place PblkC
+place PconfirmC
+
+exp TminingA (rate = mu1, guard = #PblkA + #PconfirmA < maxblk)
+exp TminingB (rate = mu2, guard = #PblkB + #PconfirmB < maxblk)
+exp TminingC (rate = mu3, guard = #PblkC + #PconfirmC < maxblk)
+exp TnotifA (rate = lambda1 * #PblkA)
+exp TnotifB (rate = lambda2 * #PblkB)
+exp TnotifC (rate = lambda3 * #PblkC)
+
+arc TminingA to PblkA
+arc PblkA to TnotifA
+arc TnotifA to PconfirmA
+
+arc TminingB to PblkB
+arc PblkB to TnotifB
+arc TnotifB to PconfirmB
+
+arc TminingC to PblkC
+arc PblkC to TnotifC
+arc TnotifC to PconfirmC
+
+place Pclear (init = 1)
+
+imm TlooseA (guard = glooseA) {
+  #PblkA = 0;
+  #PconfirmA = 0;
+  #PconfirmB = 0;
+  #PconfirmC = 0;
+}
+
+imm TlooseB (guard = glooseB) {
+  #PblkB = 0;
+  #PconfirmA = 0;
+  #PconfirmB = 0;
+  #PconfirmC = 0;
+}
+
+imm TlooseC (guard = glooseC) {
+  #PblkC = 0;
+  #PconfirmA = 0;
+  #PconfirmB = 0;
+  #PconfirmC = 0;
+}
+
+arc Pclear to TlooseA
+arc Pclear to TlooseB
+arc Pclear to TlooseC
+arc TlooseA to Pclear
+arc TlooseB to Pclear
+arc TlooseC to Pclear
+
+glooseA = #PconfirmB > #PblkA + #PconfirmA || #PconfirmC > #PblkA + #PconfirmA
+glooseB = #PconfirmA > #PblkB + #PconfirmB || #PconfirmC > #PblkB + #PconfirmB
+glooseC = #PconfirmA > #PblkC + #PconfirmC || #PconfirmB > #PblkC + #PconfirmC
+
+mu1 = 1/5
+mu2 = 1/10
+mu3 = 1/10
+lambda1 = 1/1
+lambda2 = 1/0.1
+lambda3 = 1/0.1
+
+reward A #PblkA + #PconfirmA
+reward B #PblkB + #PconfirmB
+reward C #PblkC + #PconfirmC
+reward winA ifelse(?TlooseA, 0, 1)
+reward winB ifelse(?TlooseB, 0, 1)
+reward winC ifelse(?TlooseC, 0, 1)
+
+reward loseA ifelse(?TlooseA, 1, 0)
+reward loseB ifelse(?TlooseB, 1, 0)
+reward loseC ifelse(?TlooseC, 1, 0)
+
+reward rwd1 #PblkA + #PconfirmA
+reward rwd2 #PblkB + #PconfirmB
+reward rwd3 #PblkA
+
