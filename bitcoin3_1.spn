@@ -1,0 +1,141 @@
+/*
+  bitcoin
+*/
+
+maxblk = 5
+
+place PblkAB
+place PconfirmAB
+
+place PblkAC
+place PconfirmAC
+
+place PblkBA
+place PconfirmBA
+
+place PblkBC
+place PconfirmBC
+
+place PblkCA
+place PconfirmCA
+
+place PblkCB
+place PconfirmCB
+
+exp TminingAB (rate = mu1, guard = #PblkAB + #PconfirmAB < maxblk)
+exp TminingAC (rate = mu1, guard = #PblkAC + #PconfirmAC < maxblk)
+exp TminingBA (rate = mu2, guard = #PblkBA + #PconfirmBA < maxblk)
+exp TminingBC (rate = mu2, guard = #PblkBC + #PconfirmBC < maxblk)
+exp TminingCA (rate = mu3, guard = #PblkCA + #PconfirmCA < maxblk)
+exp TminingCB (rate = mu3, guard = #PblkCB + #PconfirmCB < maxblk)
+exp TnotifAB (rate = lambda1 * #PblkAB)
+exp TnotifAC (rate = lambda1 * #PblkAC)
+exp TnotifBA (rate = lambda2 * #PblkBA)
+exp TnotifBC (rate = lambda2 * #PblkBC)
+exp TnotifCA (rate = lambda3 * #PblkCA)
+exp TnotifCB (rate = lambda3 * #PblkCB)
+
+arc TminingAB to PblkAB
+arc PblkAB to TnotifAB
+arc TnotifAB to PconfirmAB
+
+arc TminingAC to PblkAC
+arc PblkAC to TnotifAC
+arc TnotifAC to PconfirmAC
+
+arc TminingBA to PblkBA
+arc PblkBA to TnotifBA
+arc TnotifBA to PconfirmBA
+
+arc TminingBC to PblkBC
+arc PblkBC to TnotifBC
+arc TnotifBC to PconfirmBC
+
+arc TminingCA to PblkCA
+arc PblkCA to TnotifCA
+arc TnotifCA to PconfirmCA
+
+arc TminingCB to PblkCB
+arc PblkCB to TnotifCB
+arc TnotifCB to PconfirmCB
+
+place Pclear (init = 1)
+
+imm TlooseAB (guard = glooseAB) {
+  #PblkAB = 0;
+  #PconfirmAB = 0;
+  #PconfirmBA = 0;
+}
+
+imm TlooseAC (guard = glooseAC) {
+  #PblkAC = 0;
+  #PconfirmAC = 0;
+  #PconfirmCA = 0;
+}
+
+imm TlooseBA (guard = glooseBA) {
+  #PblkBA = 0;
+  #PconfirmAB = 0;
+  #PconfirmBA = 0;
+}
+
+imm TlooseBC (guard = glooseBC) {
+  #PblkBC = 0;
+  #PconfirmBC = 0;
+  #PconfirmCB = 0;
+}
+
+imm TlooseCA (guard = glooseCA) {
+  #PblkCA = 0;
+  #PconfirmAC = 0;
+  #PconfirmCA = 0;
+}
+
+imm TlooseCB (guard = glooseCB) {
+  #PblkCB = 0;
+  #PconfirmBC = 0;
+  #PconfirmCB = 0;
+}
+
+arc Pclear to TlooseAB
+arc Pclear to TlooseAC
+arc Pclear to TlooseBA
+arc Pclear to TlooseBC
+arc Pclear to TlooseCA
+arc Pclear to TlooseCB
+arc TlooseAB to Pclear
+arc TlooseAC to Pclear
+arc TlooseBA to Pclear
+arc TlooseBC to Pclear
+arc TlooseCA to Pclear
+arc TlooseCB to Pclear
+
+glooseAtoB = #PconfirmBA > #PblkAB + #PconfirmAB
+glooseAtoC = #PconfirmCA > #PblkAC + #PconfirmAC
+glooseBtoA = #PconfirmAB > #PblkBA + #PconfirmBA
+glooseBtoC = #PconfirmCB > #PblkBC + #PconfirmBC
+glooseCtoA = #PconfirmAC > #PblkCA + #PconfirmCA
+glooseCtoB = #PconfirmBC > #PblkCB + #PconfirmCB
+
+
+mu1 = 1/5
+mu2 = 1/10
+mu3 = 1/10
+lambda1 = 1/1
+lambda2 = 1/0.1
+lambda3 = 1/0.1
+
+reward A #PblkA + #PconfirmA
+reward B #PblkB + #PconfirmB
+reward C #PblkC + #PconfirmC
+reward winAB ifelse(?TlooseAB, 0, 1)
+reward winAC ifelse(?TlooseAC, 0, 1)
+reward winBA ifelse(?TlooseBA, 0, 1)
+reward winBC ifelse(?TlooseBC, 0, 1)
+reward winCA ifelse(?TlooseCA, 0, 1)
+reward winCB ifelse(?TlooseCB, 0, 1)
+
+reward rwd1 #PblkA + #PconfirmA
+reward rwd2 #PblkB + #PconfirmB
+reward rwd3 #PblkA
+
