@@ -1,90 +1,78 @@
 digraph { layout=dot; overlap=false; splines=true; node [fontsize=10];
 subgraph cluster0 {
 "PblkAB0" [shape = circle, label = "PblkAB"];
-"TminingAB" -> "PblkAB0" [label = ""];
-"TminingAB" [shape = box, label = "TminingAB
+"TminingA" -> "PblkAB0" [label = ""];
+"TminingA" [shape = box, label = "TminingA
 [((#PblkAB+#PconfirmAB)<5)]" width=0.8, height=0.2];
 "PblkAB0" -> "TnotifAB" [label = ""];
 "TnotifAB" [shape = box, label = "TnotifAB" width=0.8, height=0.2];
+"TminingA" -> "PblkAC1" [label = ""];
+"PblkAC1" [shape = circle, label = "PblkAC"];
 "TnotifAB" -> "PconfirmAB7" [label = ""];
 "PconfirmAB7" [shape = circle, label = "PconfirmAB"];
-}
-subgraph cluster1 {
-"PblkAC1" [shape = circle, label = "PblkAC"];
-"TminingAC" -> "PblkAC1" [label = ""];
-"TminingAC" [shape = box, label = "TminingAC
-[((#PblkAC+#PconfirmAC)<5)]" width=0.8, height=0.2];
 "PblkAC1" -> "TnotifAC" [label = ""];
 "TnotifAC" [shape = box, label = "TnotifAC" width=0.8, height=0.2];
 "TnotifAC" -> "PconfirmAC8" [label = ""];
 "PconfirmAC8" [shape = circle, label = "PconfirmAC"];
 }
-subgraph cluster2 {
+subgraph cluster1 {
 "PblkBA2" [shape = circle, label = "PblkBA"];
-"TminingBA" -> "PblkBA2" [label = ""];
-"TminingBA" [shape = box, label = "TminingBA
+"TminingB" -> "PblkBA2" [label = ""];
+"TminingB" [shape = box, label = "TminingB
 [((#PblkBA+#PconfirmBA)<5)]" width=0.8, height=0.2];
 "PblkBA2" -> "TnotifBA" [label = ""];
 "TnotifBA" [shape = box, label = "TnotifBA" width=0.8, height=0.2];
+"TminingB" -> "PblkBC3" [label = ""];
+"PblkBC3" [shape = circle, label = "PblkBC"];
 "TnotifBA" -> "PconfirmBA9" [label = ""];
 "PconfirmBA9" [shape = circle, label = "PconfirmBA"];
-}
-subgraph cluster3 {
-"PblkBC3" [shape = circle, label = "PblkBC"];
-"TminingBC" -> "PblkBC3" [label = ""];
-"TminingBC" [shape = box, label = "TminingBC
-[((#PblkBC+#PconfirmBC)<5)]" width=0.8, height=0.2];
 "PblkBC3" -> "TnotifBC" [label = ""];
 "TnotifBC" [shape = box, label = "TnotifBC" width=0.8, height=0.2];
 "TnotifBC" -> "PconfirmBC10" [label = ""];
 "PconfirmBC10" [shape = circle, label = "PconfirmBC"];
 }
-subgraph cluster4 {
+subgraph cluster2 {
 "PblkCA4" [shape = circle, label = "PblkCA"];
-"TminingCA" -> "PblkCA4" [label = ""];
-"TminingCA" [shape = box, label = "TminingCA
-[((#PblkCA+#PconfirmCA)<5)]" width=0.8, height=0.2];
+"TminingC" -> "PblkCA4" [label = ""];
+"TminingC" [shape = box, label = "TminingC
+[((#PblkBC+#PconfirmBC)<5)]" width=0.8, height=0.2];
 "PblkCA4" -> "TnotifCA" [label = ""];
 "TnotifCA" [shape = box, label = "TnotifCA" width=0.8, height=0.2];
+"TminingC" -> "PblkCB5" [label = ""];
+"PblkCB5" [shape = circle, label = "PblkCB"];
 "TnotifCA" -> "PconfirmCA11" [label = ""];
 "PconfirmCA11" [shape = circle, label = "PconfirmCA"];
-}
-subgraph cluster5 {
-"PblkCB5" [shape = circle, label = "PblkCB"];
-"TminingCB" -> "PblkCB5" [label = ""];
-"TminingCB" [shape = box, label = "TminingCB
-[((#PblkCB+#PconfirmCB)<5)]" width=0.8, height=0.2];
 "PblkCB5" -> "TnotifCB" [label = ""];
 "TnotifCB" [shape = box, label = "TnotifCB" width=0.8, height=0.2];
 "TnotifCB" -> "PconfirmCB12" [label = ""];
 "PconfirmCB12" [shape = circle, label = "PconfirmCB"];
 }
-subgraph cluster6 {
+subgraph cluster3 {
 "Pclear6" [shape = circle, label = "Pclear"];
 "TlooseAB" -> "Pclear6" [label = ""];
 "TlooseAB" [shape = box, label = "TlooseAB
 [glooseAB]
-{#PconfirmBA=0;#PconfirmAB=0;#PblkAB=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PconfirmBA=0;#PconfirmAC=#PconfirmBA;#PconfirmAB=0;#PblkAB=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseAC" -> "Pclear6" [label = ""];
 "TlooseAC" [shape = box, label = "TlooseAC
 [glooseAC]
-{#PconfirmCA=0;#PconfirmAC=0;#PblkAC=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PconfirmCA=0;#PconfirmAB=#PconfirmCA;#PconfirmAC=0;#PblkAC=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseBA" -> "Pclear6" [label = ""];
 "TlooseBA" [shape = box, label = "TlooseBA
 [glooseBA]
-{#PconfirmBA=0;#PconfirmAB=0;#PblkBA=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PconfirmAB=0;#PconfirmBC=#PconfirmAB;#PconfirmBA=0;#PblkBA=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseBC" -> "Pclear6" [label = ""];
 "TlooseBC" [shape = box, label = "TlooseBC
 [glooseBC]
-{#PconfirmCB=0;#PconfirmBC=0;#PblkBC=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PconfirmCB=0;#PconfirmBA=#PconfirmCB;#PconfirmBC=0;#PblkBC=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseCA" -> "Pclear6" [label = ""];
 "TlooseCA" [shape = box, label = "TlooseCA
 [glooseCA]
-{#PconfirmCA=0;#PconfirmAC=0;#PblkCA=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PconfirmAC=0;#PconfirmCB=#PconfirmAC;#PconfirmCA=0;#PblkCA=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseCB" -> "Pclear6" [label = ""];
 "TlooseCB" [shape = box, label = "TlooseCB
 [glooseCB]
-{#PconfirmCB=0;#PconfirmBC=0;#PblkCB=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PconfirmBC=0;#PconfirmCA=#PconfirmBC;#PconfirmCB=0;#PblkCB=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "Pclear6" -> "TlooseAB" [label = ""];
 "Pclear6" -> "TlooseAC" [label = ""];
 "Pclear6" -> "TlooseBA" [label = ""];

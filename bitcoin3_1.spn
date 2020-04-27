@@ -22,12 +22,9 @@ place PconfirmCA
 place PblkCB
 place PconfirmCB
 
-exp TminingAB (rate = mu1, guard = #PblkAB + #PconfirmAB < maxblk)
-exp TminingAC (rate = mu1, guard = #PblkAC + #PconfirmAC < maxblk)
-exp TminingBA (rate = mu2, guard = #PblkBA + #PconfirmBA < maxblk)
-exp TminingBC (rate = mu2, guard = #PblkBC + #PconfirmBC < maxblk)
-exp TminingCA (rate = mu3, guard = #PblkCA + #PconfirmCA < maxblk)
-exp TminingCB (rate = mu3, guard = #PblkCB + #PconfirmCB < maxblk)
+exp TminingA (rate = mu1, guard = #PblkAB + #PconfirmAB < maxblk)
+exp TminingB (rate = mu2, guard = #PblkBA + #PconfirmBA < maxblk)
+exp TminingC (rate = mu2, guard = #PblkBC + #PconfirmBC < maxblk)
 exp TnotifAB (rate = lambda1 * #PblkAB)
 exp TnotifAC (rate = lambda1 * #PblkAC)
 exp TnotifBA (rate = lambda2 * #PblkBA)
@@ -35,27 +32,27 @@ exp TnotifBC (rate = lambda2 * #PblkBC)
 exp TnotifCA (rate = lambda3 * #PblkCA)
 exp TnotifCB (rate = lambda3 * #PblkCB)
 
-arc TminingAB to PblkAB
+arc TminingA to PblkAB
 arc PblkAB to TnotifAB
 arc TnotifAB to PconfirmAB
 
-arc TminingAC to PblkAC
+arc TminingA to PblkAC
 arc PblkAC to TnotifAC
 arc TnotifAC to PconfirmAC
 
-arc TminingBA to PblkBA
+arc TminingB to PblkBA
 arc PblkBA to TnotifBA
 arc TnotifBA to PconfirmBA
 
-arc TminingBC to PblkBC
+arc TminingB to PblkBC
 arc PblkBC to TnotifBC
 arc TnotifBC to PconfirmBC
 
-arc TminingCA to PblkCA
+arc TminingC to PblkCA
 arc PblkCA to TnotifCA
 arc TnotifCA to PconfirmCA
 
-arc TminingCB to PblkCB
+arc TminingC to PblkCB
 arc PblkCB to TnotifCB
 arc TnotifCB to PconfirmCB
 
@@ -64,37 +61,43 @@ place Pclear (init = 1)
 imm TlooseAB (guard = glooseAB) {
   #PblkAB = 0;
   #PconfirmAB = 0;
+  #PconfirmAC = #PconfirmBA;
   #PconfirmBA = 0;
 }
 
 imm TlooseAC (guard = glooseAC) {
   #PblkAC = 0;
   #PconfirmAC = 0;
+  #PconfirmAB = #PconfirmCA;
   #PconfirmCA = 0;
 }
 
 imm TlooseBA (guard = glooseBA) {
   #PblkBA = 0;
-  #PconfirmAB = 0;
   #PconfirmBA = 0;
+  #PconfirmBC = #PconfirmAB;
+  #PconfirmAB = 0;
 }
 
 imm TlooseBC (guard = glooseBC) {
   #PblkBC = 0;
   #PconfirmBC = 0;
+  #PconfirmBA = #PconfirmCB;
   #PconfirmCB = 0;
 }
 
 imm TlooseCA (guard = glooseCA) {
   #PblkCA = 0;
-  #PconfirmAC = 0;
   #PconfirmCA = 0;
+  #PconfirmCB = #PconfirmAC;
+  #PconfirmAC = 0;
 }
 
 imm TlooseCB (guard = glooseCB) {
   #PblkCB = 0;
-  #PconfirmBC = 0;
   #PconfirmCB = 0;
+  #PconfirmCA = #PconfirmBC;
+  #PconfirmBC = 0;
 }
 
 arc Pclear to TlooseAB
