@@ -29,6 +29,12 @@ place PconfirmCA
 place PblkCB
 place PconfirmCB
 
+place PstockAB
+place PstockAC
+place PstockBA
+place PstockBC
+place PstockCA
+place PstockCB
 
 place PblkAB2
 place PconfirmAB2
@@ -47,6 +53,13 @@ place PconfirmCA2
 
 place PblkCB2
 place PconfirmCB2
+
+place PstockAB2
+place PstockAC2
+place PstockBA2
+place PstockBC2
+place PstockCA2
+place PstockCB2
 
 exp TminingA (rate = mu1, guard = #PblkAB + #PconfirmAB < maxblk)
 exp TminingB (rate = mu2, guard = #PblkBA + #PconfirmBA < maxblk)
@@ -105,6 +118,20 @@ imm SwitchC2 (guard = glooseCA || glooseCB){
     #PconfirmCB2 = 0    
 }
 
+imm stokAB (guard = #PconfirmAB > 0)
+imm stokAC (guard = #PconfirmAB > 0)
+imm stokBA (guard = #PconfirmAB > 0)
+imm stokBC (guard = #PconfirmAB > 0)
+imm stokCA (guard = #PconfirmAB > 0)
+imm stokCB (guard = #PconfirmAB > 0)
+
+imm stokAB2 (guard = #PconfirmAB > 0)
+imm stokAC2 (guard = #PconfirmAB > 0)
+imm stokBA2 (guard = #PconfirmAB > 0)
+imm stokBC2 (guard = #PconfirmAB > 0)
+imm stokCA2 (guard = #PconfirmAB > 0)
+imm stokCB2 (guard = #PconfirmAB > 0)
+
 arc RootA1 to SwitchA1
 arc SwitchA1 to RootA2
 arc RootA2 to SwitchA2
@@ -158,6 +185,31 @@ arc TminingC to PblkCB
 arc PblkCB to TnotifCB
 arc TnotifCB to PconfirmCB
 
+arc PstockAB to stockAB
+arc stockAB to PconfirmAB
+arc PstockAC to stockAC
+arc stockAC to PconfirmAC
+arc PstockBA to stockBA
+arc stockBA to PconfirmBA
+arc PstockBC to stockBC
+arc stockBC to PconfirmBC
+arc PstockCA to stockCA
+arc stockCA to PconfirmCA
+arc PstockCB to stockCB
+arc stockCB to PconfirmCB
+
+arc PstockAB2 to stockAB2
+arc stockAB2 to PconfirmAB2
+arc PstockAC2 to stockAC2
+arc stockAC2 to PconfirmAC2
+arc PstockBA2 to stockBA2
+arc stockBA2 to PconfirmBA2
+arc PstockBC2 to stockBC2
+arc stockBC2 to PconfirmBC2
+arc PstockCA2 to stockCA2
+arc stockCA2 to PconfirmCA2
+arc PstockCB2 to stockCB2
+arc stockCB2 to PconfirmCB2
 
 arc TminingA2 to PblkAB2
 arc PblkAB2 to TnotifAB2
@@ -188,42 +240,42 @@ place Pclear (init = 1)
 imm TlooseAB (guard = glooseAB) {
   #PblkAB = 0;
   #PconfirmAB = 0;
-  #PconfirmAC = #PconfirmBA;
+  #PstockAC = #PconfirmBA;
   #PconfirmBA = 0;
 }
 
 imm TlooseAC (guard = glooseAC) {
   #PblkAC = 0;
   #PconfirmAC = 0;
-  #PconfirmAB = #PconfirmCA;
+  #PstockAB = #PconfirmCA;
   #PconfirmCA = 0;
 }
 
 imm TlooseBA (guard = glooseBA) {
   #PblkBA = 0;
   #PconfirmBA = 0;
-  #PconfirmBC = #PconfirmAB;
+  #PstockBC = #PconfirmAB;
   #PconfirmAB = 0;
 }
 
 imm TlooseBC (guard = glooseBC) {
   #PblkBC = 0;
   #PconfirmBC = 0;
-  #PconfirmBA = #PconfirmCB;
+  #PstockBA = #PconfirmCB;
   #PconfirmCB = 0;
 }
 
 imm TlooseCA (guard = glooseCA) {
   #PblkCA = 0;
   #PconfirmCA = 0;
-  #PconfirmCB = #PconfirmAC;
+  #PstockCB = #PconfirmAC;
   #PconfirmAC = 0;
 }
 
 imm TlooseCB (guard = glooseCB) {
   #PblkCB = 0;
   #PconfirmCB = 0;
-  #PconfirmCA = #PconfirmBC;
+  #PstockCA = #PconfirmBC;
   #PconfirmBC = 0;
 }
 
