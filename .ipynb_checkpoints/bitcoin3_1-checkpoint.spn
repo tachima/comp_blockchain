@@ -81,56 +81,56 @@ exp TnotifBC2 (rate = lambda2 * #PblkBC)
 exp TnotifCA2 (rate = lambda3 * #PblkCA)
 exp TnotifCB2 (rate = lambda3 * #PblkCB)
 
-imm SwitchA1 (guard = glooseAB || glooseAC){
+imm SwitchA1 (guard = glooseAB || glooseAC || glooseAB2 || glooseAC2){
     #PblkAB = 0
     #PconfirmAB = 0
     #PblkAC = 0
     #PconfirmAC = 0    
 }
-imm SwitchA2 (guard = glooseAB || glooseAC){
+imm SwitchA2 (guard = glooseA2B || glooseA2C || glooseA2B2 || glooseA2C2){
     #PblkAB2 = 0
     #PconfirmAB2 = 0
     #PblkAC2 = 0
     #PconfirmAC2 = 0    
 }
-imm SwitchB1 (guard = glooseBA || glooseBC){
+imm SwitchB1 (guard = glooseBA || glooseBC || glooseBA2 || glooseBC2){
     #PblkBA = 0
     #PconfirmBA = 0
     #PblkBC = 0
     #PconfirmBC = 0    
 }
-imm SwitchB2 (guard = glooseBA || glooseBC){
+imm SwitchB2 (guard = glooseB2A || glooseB2C || glooseB2A2 || glooseB2C2){
     #PblkBA2 = 0
     #PconfirmBA2 = 0
     #PblkBC2 = 0
     #PconfirmBC2 = 0    
 }
-imm SwitchC1 (guard = glooseCA || glooseCB){
+imm SwitchC1 (guard = glooseCA || glooseCB || glooseCA2 || glooseCB2){
     #PblkCA = 0
     #PconfirmCA = 0
     #PblkCB = 0
     #PconfirmCB = 0    
 }
-imm SwitchC2 (guard = glooseCA || glooseCB){
+imm SwitchC2 (guard = glooseC2A || glooseC2B || glooseC2A2 || glooseC2B2){
     #PblkCA2 = 0
     #PconfirmCA2 = 0
     #PblkCB2 = 0
     #PconfirmCB2 = 0    
 }
 
-imm stokAB (guard = #PconfirmAB > 0)
-imm stokAC (guard = #PconfirmAB > 0)
-imm stokBA (guard = #PconfirmAB > 0)
-imm stokBC (guard = #PconfirmAB > 0)
-imm stokCA (guard = #PconfirmAB > 0)
-imm stokCB (guard = #PconfirmAB > 0)
+imm stockAB (guard = #PconfirmAB > 0)
+imm stockAC (guard = #PconfirmAB > 0)
+imm stockBA (guard = #PconfirmAB > 0)
+imm stockBC (guard = #PconfirmAB > 0)
+imm stockCA (guard = #PconfirmAB > 0)
+imm stockCB (guard = #PconfirmAB > 0)
 
-imm stokAB2 (guard = #PconfirmAB > 0)
-imm stokAC2 (guard = #PconfirmAB > 0)
-imm stokBA2 (guard = #PconfirmAB > 0)
-imm stokBC2 (guard = #PconfirmAB > 0)
-imm stokCA2 (guard = #PconfirmAB > 0)
-imm stokCB2 (guard = #PconfirmAB > 0)
+imm stockAB2 (guard = #PconfirmAB > 0)
+imm stockAC2 (guard = #PconfirmAB > 0)
+imm stockBA2 (guard = #PconfirmAB > 0)
+imm stockBC2 (guard = #PconfirmAB > 0)
+imm stockCA2 (guard = #PconfirmAB > 0)
+imm stockCB2 (guard = #PconfirmAB > 0)
 
 arc RootA1 to SwitchA1
 arc SwitchA1 to RootA2
@@ -279,6 +279,135 @@ imm TlooseCB (guard = glooseCB) {
   #PconfirmBC = 0;
 }
 
+
+imm TlooseA2B (guard = glooseA2B) {
+  #PblkAB2 = 0;
+  #PconfirmAB2 = 0;
+  #PstockAC2 = #PconfirmBA;
+  #PconfirmBA = 0;
+}
+
+imm TlooseA2C (guard = glooseA2C) {
+  #PblkAC2 = 0;
+  #PconfirmAC2 = 0;
+  #PstockAB2 = #PconfirmCA;
+  #PconfirmCA = 0;
+}
+
+imm TlooseB2A (guard = glooseB2A) {
+  #PblkBA2 = 0;
+  #PconfirmBA2 = 0;
+  #PstockBC2 = #PconfirmAB;
+  #PconfirmAB = 0;
+}
+
+imm TlooseB2C (guard = glooseB2C) {
+  #PblkBC2 = 0;
+  #PconfirmBC2 = 0;
+  #PstockBA2 = #PconfirmCB;
+  #PconfirmCB = 0;
+}
+
+imm TlooseC2A (guard = glooseC2A) {
+  #PblkCA2 = 0;
+  #PconfirmCA2 = 0;
+  #PstockCB2 = #PconfirmAC;
+  #PconfirmAC = 0;
+}
+
+imm TlooseC2B (guard = glooseC2B) {
+  #PblkCB2 = 0;
+  #PconfirmCB2 = 0;
+  #PstockCA2 = #PconfirmBC;
+  #PconfirmBC = 0;
+}
+
+
+imm TlooseAB2 (guard = glooseAB2) {
+  #PblkAB = 0;
+  #PconfirmAB = 0;
+  #PstockAC = #PconfirmBA2;
+  #PconfirmBA2 = 0;
+}
+
+imm TlooseAC2 (guard = glooseAC2) {
+  #PblkAC = 0;
+  #PconfirmAC = 0;
+  #PstockAB = #PconfirmCA2;
+  #PconfirmCA2 = 0;
+}
+
+imm TlooseBA2 (guard = glooseBA2) {
+  #PblkBA = 0;
+  #PconfirmBA = 0;
+  #PstockBC = #PconfirmAB2;
+  #PconfirmAB2 = 0;
+}
+
+imm TlooseBC2 (guard = glooseBC2) {
+  #PblkBC = 0;
+  #PconfirmBC = 0;
+  #PstockBA = #PconfirmCB2;
+  #PconfirmCB2 = 0;
+}
+
+imm TlooseCA2 (guard = glooseCA2) {
+  #PblkCA = 0;
+  #PconfirmCA = 0;
+  #PstockCB = #PconfirmAC2;
+  #PconfirmAC2 = 0;
+}
+
+imm TlooseCB2 (guard = glooseCB2) {
+  #PblkCB = 0;
+  #PconfirmCB = 0;
+  #PstockCA = #PconfirmBC2;
+  #PconfirmBC2 = 0;
+}
+
+
+imm TlooseA2B2 (guard = glooseA2B2) {
+  #PblkAB2 = 0;
+  #PconfirmAB2 = 0;
+  #PstockAC2 = #PconfirmBA2;
+  #PconfirmBA2 = 0;
+}
+
+imm TlooseA2C2 (guard = glooseA2C2) {
+  #PblkAC2 = 0;
+  #PconfirmAC2 = 0;
+  #PstockAB2 = #PconfirmCA2;
+  #PconfirmCA2 = 0;
+}
+
+imm TlooseB2A2 (guard = glooseB2A2) {
+  #PblkBA2 = 0;
+  #PconfirmBA2 = 0;
+  #PstockBC2 = #PconfirmAB2;
+  #PconfirmAB2 = 0;
+}
+
+imm TlooseB2C2 (guard = glooseB2C2) {
+  #PblkBC2 = 0;
+  #PconfirmBC2 = 0;
+  #PstockBA2 = #PconfirmCB2;
+  #PconfirmCB2 = 0;
+}
+
+imm TlooseC2A2 (guard = glooseC2A2) {
+  #PblkCA2 = 0;
+  #PconfirmCA2 = 0;
+  #PstockCB2 = #PconfirmAC2;
+  #PconfirmAC2 = 0;
+}
+
+imm TlooseC2B2 (guard = glooseC2B2) {
+  #PblkCB2 = 0;
+  #PconfirmCB2 = 0;
+  #PstockCA2 = #PconfirmBC2;
+  #PconfirmBC2 = 0;
+}
+
 arc Pclear to TlooseAB
 arc Pclear to TlooseAC
 arc Pclear to TlooseBA
@@ -292,13 +421,33 @@ arc TlooseBC to Pclear
 arc TlooseCA to Pclear
 arc TlooseCB to Pclear
 
-glooseAtoB = #PconfirmBA > #PblkAB + #PconfirmAB || #PconfirmBA2 > #PblkAB2 + #PconfirmAB2
-glooseAtoC = #PconfirmCA > #PblkAC + #PconfirmAC || #PconfirmCA2 > #PblkAC2 + #PconfirmAC2
-glooseBtoA = #PconfirmAB > #PblkBA + #PconfirmBA || #PconfirmAB2 > #PblkBA2 + #PconfirmBA2
-glooseBtoC = #PconfirmCB > #PblkBC + #PconfirmBC || #PconfirmCB2 > #PblkBC2 + #PconfirmBC2
-glooseCtoA = #PconfirmAC > #PblkCA + #PconfirmCA || #PconfirmAC2 > #PblkCA2 + #PconfirmCA2
-glooseCtoB = #PconfirmBC > #PblkCB + #PconfirmCB || #PconfirmBC2 > #PblkCB2 + #PconfirmCB2
+glooseAB = #PconfirmBA > #PblkAB + #PconfirmAB
+glooseAC = #PconfirmCA > #PblkAC + #PconfirmAC
+glooseBA = #PconfirmAB > #PblkBA + #PconfirmBA
+glooseBC = #PconfirmCB > #PblkBC + #PconfirmBC
+glooseCA = #PconfirmAC > #PblkCA + #PconfirmCA
+glooseCB = #PconfirmBC > #PblkCB + #PconfirmCB
 
+glooseA2B = #PconfirmBA > #PblkAB2 + #PconfirmAB2
+glooseA2C = #PconfirmCA > #PblkAC2 + #PconfirmAC2
+glooseB2A = #PconfirmAB > #PblkBA2 + #PconfirmBA2
+glooseB2C = #PconfirmCB > #PblkBC2 + #PconfirmBC2
+glooseC2A = #PconfirmAC > #PblkCA2 + #PconfirmCA2
+glooseC2B = #PconfirmBC > #PblkCB2 + #PconfirmCB2
+
+glooseAB2 = #PconfirmBA2 > #PblkAB + #PconfirmAB
+glooseAC2 = #PconfirmCA2 > #PblkAC + #PconfirmAC
+glooseBA2 = #PconfirmAB2 > #PblkBA + #PconfirmBA
+glooseBC2 = #PconfirmCB2 > #PblkBC + #PconfirmBC
+glooseCA2 = #PconfirmAC2 > #PblkCA + #PconfirmCA
+glooseCB2 = #PconfirmBC2 > #PblkCB + #PconfirmCB
+
+glooseA2B2 = #PconfirmBA2 > #PblkAB2 + #PconfirmAB2
+glooseA2C2 = #PconfirmCA2 > #PblkAC2 + #PconfirmAC2
+glooseB2A2 = #PconfirmAB2 > #PblkBA2 + #PconfirmBA2
+glooseB2C2 = #PconfirmCB2 > #PblkBC2 + #PconfirmBC2
+glooseC2A2 = #PconfirmAC2 > #PblkCA2 + #PconfirmCA2
+glooseC2B2 = #PconfirmBC2 > #PblkCB2 + #PconfirmCB2
 
 mu1 = 1/5
 mu2 = 1/10
@@ -306,18 +455,3 @@ mu3 = 1/10
 lambda1 = 1/1
 lambda2 = 1/0.1
 lambda3 = 1/0.1
-
-reward A #PblkA + #PconfirmA
-reward B #PblkB + #PconfirmB
-reward C #PblkC + #PconfirmC
-reward winAB ifelse(?TlooseAB, 0, 1)
-reward winAC ifelse(?TlooseAC, 0, 1)
-reward winBA ifelse(?TlooseBA, 0, 1)
-reward winBC ifelse(?TlooseBC, 0, 1)
-reward winCA ifelse(?TlooseCA, 0, 1)
-reward winCB ifelse(?TlooseCB, 0, 1)
-
-reward rwd1 #PblkA + #PconfirmA
-reward rwd2 #PblkB + #PconfirmB
-reward rwd3 #PblkA
-
