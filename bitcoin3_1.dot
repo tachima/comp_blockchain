@@ -211,99 +211,99 @@ subgraph cluster3 {
 "TlooseA2B2" -> "Pclear12" [label = ""];
 "TlooseA2B2" [shape = box, label = "TlooseA2B2
 [(#PconfirmBA2>(#PblkAB2+#PconfirmAB2))]
-{#PlengthAB=#PconfirmBA2;#PconfirmBA2=0;#PstockAC=#PconfirmBA2;#PconfirmAB2=0;#PblkAB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmBA2;#PlengthAB=#PconfirmBA2;#PconfirmBA2=0;#PstockAC=#PconfirmBA2;#PconfirmAB2=0;#PblkAB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseA2B" -> "Pclear12" [label = ""];
 "TlooseA2B" [shape = box, label = "TlooseA2B
 [(#PconfirmBA>(#PblkAB2+#PconfirmAB2))]
-{#PlengthAB=#PconfirmBA;#PconfirmBA=0;#PstockAC=#PconfirmBA;#PconfirmAB2=0;#PblkAB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmBA;#PlengthAB=#PconfirmBA;#PconfirmBA=0;#PstockAC=#PconfirmBA;#PconfirmAB2=0;#PblkAB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseA2C2" -> "Pclear12" [label = ""];
 "TlooseA2C2" [shape = box, label = "TlooseA2C2
 [(#PconfirmCA2>(#PblkAC2+#PconfirmAC2))]
-{#PlengthCA=#PconfirmCA2;#PconfirmCA2=0;#PstockAB=#PconfirmCA2;#PconfirmAC2=0;#PblkAC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmCA2;#PlengthCA=#PconfirmCA2;#PconfirmCA2=0;#PstockAB=#PconfirmCA2;#PconfirmAC2=0;#PblkAC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseA2C" -> "Pclear12" [label = ""];
 "TlooseA2C" [shape = box, label = "TlooseA2C
 [(#PconfirmCA>(#PblkAC2+#PconfirmAC2))]
-{#PlengthCA=#PconfirmCA;#PconfirmCA=0;#PstockAB=#PconfirmCA;#PconfirmAC2=0;#PblkAC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmCA;#PlengthCA=#PconfirmCA;#PconfirmCA=0;#PstockAB=#PconfirmCA;#PconfirmAC2=0;#PblkAC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseAB2" -> "Pclear12" [label = ""];
 "TlooseAB2" [shape = box, label = "TlooseAB2
 [(#PconfirmBA2>(#PblkAB+#PconfirmAB))]
-{#PlengthAB=#PconfirmBA2;#PconfirmBA2=0;#PstockAC2=#PconfirmBA2;#PconfirmAB=0;#PblkAB=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmBA2;#PlengthAB=#PconfirmBA2;#PconfirmBA2=0;#PstockAC2=#PconfirmBA2;#PconfirmAB=0;#PblkAB=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseAB" -> "Pclear12" [label = ""];
 "TlooseAB" [shape = box, label = "TlooseAB
 [(#PconfirmBA>(#PblkAB+#PconfirmAB))]
-{#PlengthAB=#PconfirmBA;#PconfirmBA=0;#PstockAC2=#PconfirmBA;#PconfirmAB=0;#PblkAB=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmBA;#PlengthAB=#PconfirmBA;#PconfirmBA=0;#PstockAC2=#PconfirmBA;#PconfirmAB=0;#PblkAB=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseAC2" -> "Pclear12" [label = ""];
 "TlooseAC2" [shape = box, label = "TlooseAC2
 [(#PconfirmCA2>(#PblkAC+#PconfirmAC))]
-{#PlengthCA=#PconfirmCA2;#PconfirmCA2=0;#PstockAB2=#PconfirmCA2;#PconfirmAC=0;#PblkAC=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthA=#PconfirmCA2;#PlengthCA=#PconfirmCA2;#PconfirmCA2=0;#PstockAB2=#PconfirmCA2;#PconfirmAC=0;#PblkAC=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseAC" -> "Pclear12" [label = ""];
 "TlooseAC" [shape = box, label = "TlooseAC
 [(#PconfirmCA>(#PblkAC+#PconfirmAC))]
-{#PlengthCA=#PconfirmCA;#PconfirmCA=0;#PstockAB2=#PconfirmCA;#PconfirmAC=0;#PblkAC=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmCA;#PlengthCA=#PconfirmCA;#PconfirmCA=0;#PstockAB2=#PconfirmCA;#PconfirmAC=0;#PblkAC=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseB2A2" -> "Pclear12" [label = ""];
 "TlooseB2A2" [shape = box, label = "TlooseB2A2
 [(#PconfirmAB2>(#PblkBA2+#PconfirmBA2))]
-{#PlengthBC=#PconfirmAB2;#PconfirmAB2=0;#PstockBC=#PconfirmAB2;#PconfirmBA2=0;#PblkBA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmAB2;#PlengthAB=#PconfirmAB2;#PconfirmAB2=0;#PstockBC=#PconfirmAB2;#PconfirmBA2=0;#PblkBA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseB2A" -> "Pclear12" [label = ""];
 "TlooseB2A" [shape = box, label = "TlooseB2A
 [(#PconfirmAB>(#PblkBA2+#PconfirmBA2))]
-{#PlengthAB=#PconfirmAB;#PconfirmAB=0;#PstockBC=#PconfirmAB;#PconfirmBA2=0;#PblkBA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmAB;#PlengthAB=#PconfirmAB;#PconfirmAB=0;#PstockBC=#PconfirmAB;#PconfirmBA2=0;#PblkBA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseB2C2" -> "Pclear12" [label = ""];
 "TlooseB2C2" [shape = box, label = "TlooseB2C2
 [(#PconfirmCB2>(#PblkBC2+#PconfirmBC2))]
-{#PlengthBC=#PconfirmCB2;#PconfirmCB2=0;#PstockBA=#PconfirmCB2;#PconfirmBC2=0;#PblkBC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmCB2;#PlengthBC=#PconfirmCB2;#PconfirmCB2=0;#PstockBA=#PconfirmCB2;#PconfirmBC2=0;#PblkBC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseB2C" -> "Pclear12" [label = ""];
 "TlooseB2C" [shape = box, label = "TlooseB2C
 [(#PconfirmCB>(#PblkBC2+#PconfirmBC2))]
-{#PlengthBC=#PconfirmCB;#PconfirmCB=0;#PstockBA=#PconfirmCB;#PconfirmBC2=0;#PblkBC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmCB;#PlengthBC=#PconfirmCB;#PconfirmCB=0;#PstockBA=#PconfirmCB;#PconfirmBC2=0;#PblkBC2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseBA2" -> "Pclear12" [label = ""];
 "TlooseBA2" [shape = box, label = "TlooseBA2
 [(#PconfirmAB2>(#PblkBA+#PconfirmBA))]
-{#PlengthAB=#PconfirmAB2;#PconfirmAB2=0;#PstockBC2=#PconfirmAB2;#PconfirmBA=0;#PblkBA=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmAB2;#PlengthAB=#PconfirmAB2;#PconfirmAB2=0;#PstockBC2=#PconfirmAB2;#PconfirmBA=0;#PblkBA=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseBA" -> "Pclear12" [label = ""];
 "TlooseBA" [shape = box, label = "TlooseBA
 [(#PconfirmAB>(#PblkBA+#PconfirmBA))]
-{#PlengthAB=#PconfirmAB;#PconfirmAB=0;#PstockBC2=#PconfirmAB;#PconfirmBA=0;#PblkBA=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmAB;#PlengthAB=#PconfirmAB;#PconfirmAB=0;#PstockBC2=#PconfirmAB;#PconfirmBA=0;#PblkBA=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseBC2" -> "Pclear12" [label = ""];
 "TlooseBC2" [shape = box, label = "TlooseBC2
 [(#PconfirmCB2>(#PblkBC+#PconfirmBC))]
-{#PlengthBC=#PconfirmCB2;#PconfirmCB2=0;#PstockBA2=#PconfirmCB2;#PconfirmBC=0;#PblkBC=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmCB2;#PlengthBC=#PconfirmCB2;#PconfirmCB2=0;#PstockBA2=#PconfirmCB2;#PconfirmBC=0;#PblkBC=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseBC" -> "Pclear12" [label = ""];
 "TlooseBC" [shape = box, label = "TlooseBC
 [(#PconfirmCB>(#PblkBC+#PconfirmBC))]
-{#PlengthBC=#PconfirmCB;#PconfirmCB=0;#PstockBA2=#PconfirmCB;#PconfirmBC=0;#PblkBC=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthB=#PconfirmCB;#PlengthBC=#PconfirmCB;#PconfirmCB=0;#PstockBA2=#PconfirmCB;#PconfirmBC=0;#PblkBC=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseC2A2" -> "Pclear12" [label = ""];
 "TlooseC2A2" [shape = box, label = "TlooseC2A2
 [(#PconfirmAC2>(#PblkCA2+#PconfirmCA2))]
-{#PlengthCA=#PconfirmAC2;#PconfirmAC2=0;#PstockCB=#PconfirmAC2;#PconfirmCA2=0;#PblkCA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmAC2;#PlengthCA=#PconfirmAC2;#PconfirmAC2=0;#PstockCB=#PconfirmAC2;#PconfirmCA2=0;#PblkCA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseC2A" -> "Pclear12" [label = ""];
 "TlooseC2A" [shape = box, label = "TlooseC2A
 [(#PconfirmAC>(#PblkCA2+#PconfirmCA2))]
-{#PlengthCA=#PconfirmAC;#PconfirmAC=0;#PstockCB=#PconfirmAC;#PconfirmCA2=0;#PblkCA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmAC;#PlengthCA=#PconfirmAC;#PconfirmAC=0;#PstockCB=#PconfirmAC;#PconfirmCA2=0;#PblkCA2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseC2B2" -> "Pclear12" [label = ""];
 "TlooseC2B2" [shape = box, label = "TlooseC2B2
 [(#PconfirmBC2>(#PblkCB2+#PconfirmCB2))]
-{#PlengthBC=#PconfirmBC2;#PconfirmBC2=0;#PstockCA=#PconfirmBC2;#PconfirmCB2=0;#PblkCB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmBC2;#PlengthBC=#PconfirmBC2;#PconfirmBC2=0;#PstockCA=#PconfirmBC2;#PconfirmCB2=0;#PblkCB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseC2B" -> "Pclear12" [label = ""];
 "TlooseC2B" [shape = box, label = "TlooseC2B
 [(#PconfirmBC>(#PblkCB2+#PconfirmCB2))]
-{#PlengthBC=#PconfirmBC;#PconfirmBC=0;#PstockCA=#PconfirmBC;#PconfirmCB2=0;#PblkCB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmBC;#PlengthBC=#PconfirmBC;#PconfirmBC=0;#PstockCA=#PconfirmBC;#PconfirmCB2=0;#PblkCB2=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseCA2" -> "Pclear12" [label = ""];
 "TlooseCA2" [shape = box, label = "TlooseCA2
 [(#PconfirmAC2>(#PblkCA+#PconfirmCA))]
-{#PlengthCA=#PconfirmAC2;#PconfirmAC2=0;#PstockCB2=#PconfirmAC2;#PconfirmCA=0;#PblkCA=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmAC2;#PlengthCA=#PconfirmAC2;#PconfirmAC2=0;#PstockCB2=#PconfirmAC2;#PconfirmCA=0;#PblkCA=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseCA" -> "Pclear12" [label = ""];
 "TlooseCA" [shape = box, label = "TlooseCA
 [(#PconfirmAC>(#PblkCA+#PconfirmCA))]
-{#PlengthCA=#PconfirmAC;#PconfirmAC=0;#PstockCB2=#PconfirmAC;#PconfirmCA=0;#PblkCA=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmAC;#PlengthCA=#PconfirmAC;#PconfirmAC=0;#PstockCB2=#PconfirmAC;#PconfirmCA=0;#PblkCA=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseCB2" -> "Pclear12" [label = ""];
 "TlooseCB2" [shape = box, label = "TlooseCB2
 [(#PconfirmBC2>(#PblkCB+#PconfirmCB))]
-{#PlengthBC=#PconfirmBC2;#PconfirmBC2=0;#PstockCA2=#PconfirmBC2;#PconfirmCB=0;#PblkCB=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmBC2;#PlengthBC=#PconfirmBC2;#PconfirmBC2=0;#PstockCA2=#PconfirmBC2;#PconfirmCB=0;#PblkCB=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "TlooseCB" -> "Pclear12" [label = ""];
 "TlooseCB" [shape = box, label = "TlooseCB
 [(#PconfirmBC>(#PblkCB+#PconfirmCB))]
-{#PlengthBC=#PconfirmBC;#PconfirmBC=0;#PstockCA2=#PconfirmBC;#PconfirmCB=0;#PblkCB=0;}" width=0.8, height=0.02, style="filled,dashed"];
+{#PlengthC=#PconfirmBC;#PlengthBC=#PconfirmBC;#PconfirmBC=0;#PstockCA2=#PconfirmBC;#PconfirmCB=0;#PblkCB=0;}" width=0.8, height=0.02, style="filled,dashed"];
 "Pclear12" -> "TlooseA2B" [label = ""];
 "Pclear12" -> "TlooseA2B2" [label = ""];
 "Pclear12" -> "TlooseA2C" [label = ""];
