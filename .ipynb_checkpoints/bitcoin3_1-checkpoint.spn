@@ -475,9 +475,9 @@ imm TconsensusAB (guard = gconsensusAB) {
 }
 
 imm TconsensusAC (guard = gconsensusAC) {
-  #PlengthA = #PlengthA - #PlengthAC;
-  #PlengthB = #PlengthB - #PlengthAC;
-  #PlengthC = #PlengthC - #PlengthAC;
+  #PlengthA = #PlengthA - #PlengthCA;
+  #PlengthB = #PlengthB - #PlengthCA;
+  #PlengthC = #PlengthC - #PlengthCA;
   #PlengthAB = 0;
   #PlengthBC = 0;
   #PlengthCA = 0;
@@ -511,9 +511,9 @@ imm TconsensusCA (guard = gconsensusCA) {
 }
 
 imm TconsensusCB (guard = gconsensusCB) {
-  #PlengthA = #PlengthA - #PlengthCB;
-  #PlengthB = #PlengthB - #PlengthCB;
-  #PlengthC = #PlengthC - #PlengthCB;
+  #PlengthA = #PlengthA - #PlengthBC;
+  #PlengthB = #PlengthB - #PlengthBC;
+  #PlengthC = #PlengthC - #PlengthBC;
   #PlengthAB = 0;
   #PlengthBC = 0;
   #PlengthCA = 0;
