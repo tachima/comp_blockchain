@@ -1,0 +1,178 @@
+place A_A
+place A_AB
+place A_CA
+place B_A
+place B_AB
+place B_CA
+place C_A
+place C_AB
+place C_CA
+
+place A_B
+place A_BC
+place B_B
+place B_BC
+place C_B
+place C_BC
+
+place A_C
+place B_C
+place C_C
+
+place consensus_toA(init = 1)
+place consensus_toB(init = 1)
+place consensus_toC(init = 1)
+place consensusBtoA
+place consensusCtoA
+place consensusAtoB
+place consensusCtoB
+place consensusBtoC
+place consensusAtoC
+
+exp TminingA (rate = muA)
+exp TminingB (rate = muB)
+exp TminingC (rate = muC)
+
+exp TdelayA_B (rate = lambdaB, guard = #A_B < #B_B)
+exp TdelayA_C (rate = lambdaC, guard = #A_C < #C_C)
+exp TdelayB_A (rate = lambdaA, guard = #B_A < #A_A)
+exp TdelayB_C (rate = lambdaC, guard = #B_C < #C_C)
+exp TdelayC_A (rate = lambdaA, guard = #C_A < #A_A)
+exp TdelayC_B (rate = lambdaB, guard = #C_B < #B_B)
+
+arc TminingA to A_A
+arc TminingB to B_B
+arc TminingC to C_C
+
+arc TdelayA_B to A_B
+arc TdelayA_C to A_C
+arc TdelayB_A to B_A
+arc TdelayB_C to B_C
+arc TdelayC_A to C_A
+arc TdelayC_B to C_B
+
+imm TconsensusAtoB (guard = #A_A < #A_B){
+    #A_A = #A_B;
+    #A_AB = #A_B;
+    #B_AB = #A_B;
+    #C_AB = #A_B;
+}
+imm TconsensusAtoC (guard = #A_A < #A_C){
+    #A_A = #A_C;
+    #A_CA = #A_C;
+    #B_CA = #A_C;
+    #C_CA = #A_C;
+}
+imm TconsensusBtoA (guard = #B_B < #B_A){
+    #B_B = #B_A;
+    #A_AB = #B_A;
+    #B_AB = #B_A;
+    #C_AB = #B_A;
+}
+imm TconsensusBtoC (guard = #B_B < #B_C){
+    #B_B = #B_C;
+    #A_BC = #B_C;
+    #B_BC = #B_C;
+    #C_BC = #B_C;
+}
+imm TconsensusCtoA (guard = #C_C < #C_A){
+    #C_C = #C_A;
+    #A_CA = #C_A;
+    #B_CA = #C_A;
+    #C_CA = #C_A;
+}
+imm TconsensusCtoB (guard = #C_C < #C_B){
+    #C_C = #C_B;
+    #A_BC = #C_B;
+    #B_BC = #C_B;
+    #C_BC = #C_B;
+}
+
+imm TconsensusBtoA_CtoA (guard = #C_C < #C_A){
+    #C_C = #C_A;
+    #A_CA = #C_A;
+    #B_CA = #C_A;
+    #C_CA = #C_A;
+    #A_A = #A_A - #A_AB;
+    #B_B = #B_B - #A_AB;
+    #C_C = #C_C - #A_AB;
+}
+imm TconsensusCtoA_BtoA (guard = #B_B < #B_A){
+    #B_B = #B_A;
+    #A_AB = #B_A;
+    #B_AB = #B_A;
+    #C_AB = #B_A;
+    #A_A = #A_A - #A_CA;
+    #B_B = #B_B - #A_CA;
+    #C_C = #C_C - #A_CA;
+}
+imm TconsensusAtoB_CtoB (guard = #C_C < #C_B){
+    #C_C = #C_B;
+    #A_BC = #C_B;
+    #B_BC = #C_B;
+    #C_BC = #C_B;
+    #A_A = #A_A - #A_AB;
+    #B_B = #B_B - #A_AB;
+    #C_C = #C_C - #A_AB;
+}
+imm TconsensusCtoB_AtoB (guard = #A_A < #A_B){
+    #A_A = #A_B;
+    #A_AB = #A_B;
+    #B_AB = #A_B;
+    #C_AB = #A_B;
+    #A_A = #A_A - #A_BC;
+    #B_B = #B_B - #A_BC;
+    #C_C = #C_C - #A_BC;
+}
+imm TconsensusBtoC_AtoC (guard = #A_A < #A_C){
+    #A_A = #A_C;
+    #A_CA = #A_C;
+    #B_CA = #A_C;
+    #C_CA = #A_C;
+    #A_A = #A_A - #A_BC;
+    #B_B = #B_B - #A_BC;
+    #C_C = #C_C - #A_BC;
+}
+imm TconsensusAtoC_BtoC (guard = #B_B < #B_C){
+    #A_A = #A_C;
+    #A_CA = #A_C;
+    #B_CA = #A_C;
+    #C_CA = #A_C;
+    #A_A = #A_A - #A_CA;
+    #B_B = #B_B - #A_CA;
+    #C_C = #C_C - #A_CA;
+}
+
+arc consensus_toA to TconsensusBtoA
+arc consensus_toA to TconsensusCtoA
+arc consensus_toB to TconsensusAtoB
+arc consensus_toB to TconsensusCtoB
+arc consensus_toC to TconsensusAtoC
+arc consensus_toC to TconsensusBtoC
+arc TconsensusBtoA to consensus_toA
+arc TconsensusCtoA to consensus_toA
+arc TconsensusAtoB to consensus_toB
+arc TconsensusCtoB to consensus_toB
+arc TconsensusAtoC to consensus_toC
+arc TconsensusBtoC to consensus_toC
+
+arc TconsensusBtoA to consensusBtoA
+arc TconsensusCtoA to consensusCtoA
+arc TconsensusAtoB to consensusAtoB
+arc TconsensusCtoB to consensusCtoB
+arc TconsensusAtoC to consensusAtoC
+arc TconsensusBtoC to consensusBtoC
+
+arc consensusBtoA to TconsensusBtoA_CtoA
+arc consensusCtoA to TconsensusCtoA_BtoA
+arc consensusAtoB to TconsensusAtoB_CtoB
+arc consensusCtoB to TconsensusCtoB_AtoB
+arc consensusAtoC to TconsensusAtoC_BtoC
+arc consensusBtoC to TconsensusBtoC_AtoC
+
+muA = 1/10
+muB = 1/10
+muC = 1/10
+lambdaA = 1/0.1
+lambdaB = 1/0.1
+lambdaC = 1/0.1

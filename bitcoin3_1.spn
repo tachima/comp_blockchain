@@ -2,7 +2,7 @@
   bitcoin
 */
 
-maxblk = 5
+maxblk = 100
 
 place RootA1
 place RootA2
