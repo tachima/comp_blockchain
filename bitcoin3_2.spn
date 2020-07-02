@@ -1,23 +1,21 @@
 place A_A
-place A_AB
-place A_CA
-place B_A
-place B_AB
-place B_CA
-place C_A
-place C_AB
-place C_CA
-
 place A_B
-place A_BC
-place B_B
-place B_BC
-place C_B
-place C_BC
-
 place A_C
+place B_A
+place B_B
 place B_C
+place C_A
+place C_B
 place C_C
+
+place A'
+place B'
+place C'
+
+place A&B
+place B&C
+place C&A
+place A&B&C
 
 place consensus_toA(init = 1)
 place consensus_toB(init = 1)
