@@ -1,11 +1,11 @@
 digraph { layout=dot; overlap=false; splines=true; node [fontsize=10];
 subgraph cluster0 {
-"A_A0" [shape = circle, label = "A_A"];
-"TminingA" -> "A_A0" [label = ""];
-"TminingA" [shape = box, label = "TminingA" width=0.8, height=0.2];
+"A00" [shape = circle, label = "A0"];
 }
 subgraph cluster1 {
-"A_AB1" [shape = circle, label = "A_AB"];
+"A_A1" [shape = circle, label = "A_A"];
+"TminingA" -> "A_A1" [label = ""];
+"TminingA" [shape = box, label = "TminingA" width=0.8, height=0.2];
 }
 subgraph cluster2 {
 "A_B2" [shape = circle, label = "A_B"];
@@ -14,25 +14,25 @@ subgraph cluster2 {
 [(#A_B<#B_B)]" width=0.8, height=0.2];
 }
 subgraph cluster3 {
-"A_BC3" [shape = circle, label = "A_BC"];
-}
-subgraph cluster4 {
-"A_C4" [shape = circle, label = "A_C"];
-"TdelayA_C" -> "A_C4" [label = ""];
+"A_C3" [shape = circle, label = "A_C"];
+"TdelayA_C" -> "A_C3" [label = ""];
 "TdelayA_C" [shape = box, label = "TdelayA_C
 [(#A_C<#C_C)]" width=0.8, height=0.2];
 }
+subgraph cluster4 {
+"AandB4" [shape = circle, label = "AandB"];
+}
 subgraph cluster5 {
-"A_CA5" [shape = circle, label = "A_CA"];
+"AandBandC5" [shape = circle, label = "AandBandC"];
 }
 subgraph cluster6 {
-"B_A6" [shape = circle, label = "B_A"];
-"TdelayB_A" -> "B_A6" [label = ""];
-"TdelayB_A" [shape = box, label = "TdelayB_A
-[(#B_A<#A_A)]" width=0.8, height=0.2];
+"B06" [shape = circle, label = "B0"];
 }
 subgraph cluster7 {
-"B_AB7" [shape = circle, label = "B_AB"];
+"B_A7" [shape = circle, label = "B_A"];
+"TdelayB_A" -> "B_A7" [label = ""];
+"TdelayB_A" [shape = box, label = "TdelayB_A
+[(#B_A<#A_A)]" width=0.8, height=0.2];
 }
 subgraph cluster8 {
 "B_B8" [shape = circle, label = "B_B"];
@@ -40,16 +40,16 @@ subgraph cluster8 {
 "TminingB" [shape = box, label = "TminingB" width=0.8, height=0.2];
 }
 subgraph cluster9 {
-"B_BC9" [shape = circle, label = "B_BC"];
-}
-subgraph cluster10 {
-"B_C10" [shape = circle, label = "B_C"];
-"TdelayB_C" -> "B_C10" [label = ""];
+"B_C9" [shape = circle, label = "B_C"];
+"TdelayB_C" -> "B_C9" [label = ""];
 "TdelayB_C" [shape = box, label = "TdelayB_C
 [(#B_C<#C_C)]" width=0.8, height=0.2];
 }
+subgraph cluster10 {
+"BandC10" [shape = circle, label = "BandC"];
+}
 subgraph cluster11 {
-"B_CA11" [shape = circle, label = "B_CA"];
+"C011" [shape = circle, label = "C0"];
 }
 subgraph cluster12 {
 "C_A12" [shape = circle, label = "C_A"];
@@ -58,98 +58,86 @@ subgraph cluster12 {
 [(#C_A<#A_A)]" width=0.8, height=0.2];
 }
 subgraph cluster13 {
-"C_AB13" [shape = circle, label = "C_AB"];
-}
-subgraph cluster14 {
-"C_B14" [shape = circle, label = "C_B"];
-"TdelayC_B" -> "C_B14" [label = ""];
+"C_B13" [shape = circle, label = "C_B"];
+"TdelayC_B" -> "C_B13" [label = ""];
 "TdelayC_B" [shape = box, label = "TdelayC_B
 [(#C_B<#B_B)]" width=0.8, height=0.2];
 }
-subgraph cluster15 {
-"C_BC15" [shape = circle, label = "C_BC"];
-}
-subgraph cluster16 {
-"C_C16" [shape = circle, label = "C_C"];
-"TminingC" -> "C_C16" [label = ""];
+subgraph cluster14 {
+"C_C14" [shape = circle, label = "C_C"];
+"TminingC" -> "C_C14" [label = ""];
 "TminingC" [shape = box, label = "TminingC" width=0.8, height=0.2];
 }
+subgraph cluster15 {
+"CandA15" [shape = circle, label = "CandA"];
+}
+subgraph cluster16 {
+"consensusAto_16" [shape = circle, label = "consensusAto_"];
+"TconsensusAtoB0" -> "consensusAto_16" [label = ""];
+"TconsensusAtoB0" [shape = box, label = "TconsensusAtoB0
+[((#A_A<#A_B)&&(#AB<#BandC))]
+{#CandA=0;#A_A=#A_B;#A0=#A_A;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusAtoB" -> "consensusAto_16" [label = ""];
+"TconsensusAtoB" [shape = box, label = "TconsensusAtoB
+[((#A_A<#A_B)&&(#AB>=#BandC))]
+{#CandA=0;#AandB=#A_B;#A_A=#A_B;#A0=#A_A;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusAtoC0" -> "consensusAto_16" [label = ""];
+"TconsensusAtoC0" [shape = box, label = "TconsensusAtoC0
+[((#A_A<#A_C)&&(#AC<#BandC))]
+{#AandB=0;#A_A=#A_C;#A0=#A_A;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusAtoC" -> "consensusAto_16" [label = ""];
+"TconsensusAtoC" [shape = box, label = "TconsensusAtoC
+[((#A_A<#A_C)&&(#AC>=#BandC))]
+{#AandB=0;#CandA=#A_C;#A_A=#A_C;#A0=#A_A;}" width=0.8, height=0.02, style="filled,dashed"];
+"consensusAto_16" -> "TconsensusAtoB" [label = ""];
+"consensusAto_16" -> "TconsensusAtoB0" [label = ""];
+"consensusAto_16" -> "TconsensusAtoC" [label = ""];
+"consensusAto_16" -> "TconsensusAtoC0" [label = ""];
+}
 subgraph cluster17 {
-"C_CA17" [shape = circle, label = "C_CA"];
+"consensusBto_17" [shape = circle, label = "consensusBto_"];
+"TconsensusBtoA0" -> "consensusBto_17" [label = ""];
+"TconsensusBtoA0" [shape = box, label = "TconsensusBtoA0
+[((#B_B<#B_A)&&(#B_A<#CandA))]
+{#BandC=0;#B_B=#B_A;#B0=#B_B;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusBtoA" -> "consensusBto_17" [label = ""];
+"TconsensusBtoA" [shape = box, label = "TconsensusBtoA
+[((#B_B<#B_A)&&(#B_A>=#CandA))]
+{#BandC=0;#AandB=#B_A;#B_B=#B_A;#B0=#B_B;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusBtoC0" -> "consensusBto_17" [label = ""];
+"TconsensusBtoC0" [shape = box, label = "TconsensusBtoC0
+[((#B_B<#B_C)&&(#B_C<#CandA))]
+{#AandB=0;#B_B=#B_C;#B0=#B_B;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusBtoC" -> "consensusBto_17" [label = ""];
+"TconsensusBtoC" [shape = box, label = "TconsensusBtoC
+[((#B_B<#B_C)&&(#B_C>=#CandA))]
+{#AandB=0;#BandC=#B_C;#B_B=#B_C;#B0=#B_B;}" width=0.8, height=0.02, style="filled,dashed"];
+"consensusBto_17" -> "TconsensusBtoA" [label = ""];
+"consensusBto_17" -> "TconsensusBtoA0" [label = ""];
+"consensusBto_17" -> "TconsensusBtoC" [label = ""];
+"consensusBto_17" -> "TconsensusBtoC0" [label = ""];
 }
 subgraph cluster18 {
-"consensusAtoB18" [shape = circle, label = "consensusAtoB"];
-"TconsensusAtoB" -> "consensusAtoB18" [label = ""];
-"TconsensusAtoB" [shape = box, label = "TconsensusAtoB
-[(#A_A<#A_B)]
-{#C_AB=#A_B;#B_AB=#A_B;#A_AB=#A_B;#A_A=#A_B;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensusAtoB18" -> "TconsensusAtoB_CtoB" [label = ""];
-"TconsensusAtoB_CtoB" [shape = box, label = "TconsensusAtoB_CtoB
-[(#C_C<#C_B)]
-{#C_C=(#C_C-#A_AB);#B_B=(#B_B-#A_AB);#A_A=(#A_A-#A_AB);#C_BC=#C_B;#B_BC=#C_B;#A_BC=#C_B;#C_C=#C_B;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensus_toB25" -> "TconsensusAtoB" [label = ""];
-"consensus_toB25" [shape = circle, label = "consensus_toB"];
-"TconsensusAtoB" -> "consensus_toB25" [label = ""];
-"TconsensusCtoB" -> "consensus_toB25" [label = ""];
-"TconsensusCtoB" [shape = box, label = "TconsensusCtoB
-[(#C_C<#C_B)]
-{#C_BC=#C_B;#B_BC=#C_B;#A_BC=#C_B;#C_C=#C_B;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensus_toB25" -> "TconsensusCtoB" [label = ""];
-"TconsensusCtoB" -> "consensusCtoB23" [label = ""];
-"consensusCtoB23" [shape = circle, label = "consensusCtoB"];
-"consensusCtoB23" -> "TconsensusCtoB_AtoB" [label = ""];
-"TconsensusCtoB_AtoB" [shape = box, label = "TconsensusCtoB_AtoB
-[(#A_A<#A_B)]
-{#C_C=(#C_C-#A_BC);#B_B=(#B_B-#A_BC);#A_A=(#A_A-#A_BC);#C_AB=#A_B;#B_AB=#A_B;#A_AB=#A_B;#A_A=#A_B;}" width=0.8, height=0.02, style="filled,dashed"];
-}
-subgraph cluster19 {
-"consensusAtoC19" [shape = circle, label = "consensusAtoC"];
-"TconsensusAtoC" -> "consensusAtoC19" [label = ""];
-"TconsensusAtoC" [shape = box, label = "TconsensusAtoC
-[(#A_A<#A_C)]
-{#C_CA=#A_C;#B_CA=#A_C;#A_CA=#A_C;#A_A=#A_C;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensusAtoC19" -> "TconsensusAtoC_BtoC" [label = ""];
-"TconsensusAtoC_BtoC" [shape = box, label = "TconsensusAtoC_BtoC
-[(#B_B<#B_C)]
-{#C_C=(#C_C-#A_CA);#B_B=(#B_B-#A_CA);#A_A=(#A_A-#A_CA);#C_CA=#A_C;#B_CA=#A_C;#A_CA=#A_C;#A_A=#A_C;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensus_toC26" -> "TconsensusAtoC" [label = ""];
-"consensus_toC26" [shape = circle, label = "consensus_toC"];
-"TconsensusAtoC" -> "consensus_toC26" [label = ""];
-"TconsensusBtoC" -> "consensus_toC26" [label = ""];
-"TconsensusBtoC" [shape = box, label = "TconsensusBtoC
-[(#B_B<#B_C)]
-{#C_BC=#B_C;#B_BC=#B_C;#A_BC=#B_C;#B_B=#B_C;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensus_toC26" -> "TconsensusBtoC" [label = ""];
-"TconsensusBtoC" -> "consensusBtoC21" [label = ""];
-"consensusBtoC21" [shape = circle, label = "consensusBtoC"];
-"consensusBtoC21" -> "TconsensusBtoC_AtoC" [label = ""];
-"TconsensusBtoC_AtoC" [shape = box, label = "TconsensusBtoC_AtoC
-[(#A_A<#A_C)]
-{#C_C=(#C_C-#A_BC);#B_B=(#B_B-#A_BC);#A_A=(#A_A-#A_BC);#C_CA=#A_C;#B_CA=#A_C;#A_CA=#A_C;#A_A=#A_C;}" width=0.8, height=0.02, style="filled,dashed"];
-}
-subgraph cluster20 {
-"consensusBtoA20" [shape = circle, label = "consensusBtoA"];
-"TconsensusBtoA" -> "consensusBtoA20" [label = ""];
-"TconsensusBtoA" [shape = box, label = "TconsensusBtoA
-[(#B_B<#B_A)]
-{#C_AB=#B_A;#B_AB=#B_A;#A_AB=#B_A;#B_B=#B_A;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensusBtoA20" -> "TconsensusBtoA_CtoA" [label = ""];
-"TconsensusBtoA_CtoA" [shape = box, label = "TconsensusBtoA_CtoA
-[(#C_C<#C_A)]
-{#C_C=(#C_C-#A_AB);#B_B=(#B_B-#A_AB);#A_A=(#A_A-#A_AB);#C_CA=#C_A;#B_CA=#C_A;#A_CA=#C_A;#C_C=#C_A;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensus_toA24" -> "TconsensusBtoA" [label = ""];
-"consensus_toA24" [shape = circle, label = "consensus_toA"];
-"TconsensusBtoA" -> "consensus_toA24" [label = ""];
-"TconsensusCtoA" -> "consensus_toA24" [label = ""];
+"consensusCto_18" [shape = circle, label = "consensusCto_"];
+"TconsensusCtoA0" -> "consensusCto_18" [label = ""];
+"TconsensusCtoA0" [shape = box, label = "TconsensusCtoA0
+[((#C_C<#C_A)&&(#C_A<#AandB))]
+{#BandC=0;#C_C=#C_A;#C0=#C_C;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusCtoA" -> "consensusCto_18" [label = ""];
 "TconsensusCtoA" [shape = box, label = "TconsensusCtoA
-[(#C_C<#C_A)]
-{#C_CA=#C_A;#B_CA=#C_A;#A_CA=#C_A;#C_C=#C_A;}" width=0.8, height=0.02, style="filled,dashed"];
-"consensus_toA24" -> "TconsensusCtoA" [label = ""];
-"TconsensusCtoA" -> "consensusCtoA22" [label = ""];
-"consensusCtoA22" [shape = circle, label = "consensusCtoA"];
-"consensusCtoA22" -> "TconsensusCtoA_BtoA" [label = ""];
-"TconsensusCtoA_BtoA" [shape = box, label = "TconsensusCtoA_BtoA
-[(#B_B<#B_A)]
-{#C_C=(#C_C-#A_CA);#B_B=(#B_B-#A_CA);#A_A=(#A_A-#A_CA);#C_AB=#B_A;#B_AB=#B_A;#A_AB=#B_A;#B_B=#B_A;}" width=0.8, height=0.02, style="filled,dashed"];
+[((#C_C<#C_A)&&(#C_A>=#AandB))]
+{#BandC=0;#CandA=#C_A;#C_C=#C_A;#C0=#C_C;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusCtoB0" -> "consensusCto_18" [label = ""];
+"TconsensusCtoB0" [shape = box, label = "TconsensusCtoB0
+[((#C_C<#C_B)&&(#C_B<#AandB))]
+{#CandA=0;#C_C=#C_B;#C0=#C_C;}" width=0.8, height=0.02, style="filled,dashed"];
+"TconsensusCtoB" -> "consensusCto_18" [label = ""];
+"TconsensusCtoB" [shape = box, label = "TconsensusCtoB
+[((#C_C<#C_B)&&(#C_B>=#AandB))]
+{#CandA=0;#BandC=#C_B;#C_C=#C_B;#C0=#C_C;}" width=0.8, height=0.02, style="filled,dashed"];
+"consensusCto_18" -> "TconsensusCtoA" [label = ""];
+"consensusCto_18" -> "TconsensusCtoA0" [label = ""];
+"consensusCto_18" -> "TconsensusCtoB" [label = ""];
+"consensusCto_18" -> "TconsensusCtoB0" [label = ""];
 }
 }

@@ -3,4 +3,4 @@ java -jar JS view -i bitcoin3_1.spn > bitcoin3_1.dot
 dot -T pdf bitcoin3_1.dot > bitcoin3_1.pdf
 
 //simulation
-java -jar JSPetriNet.jar sim -i bitcoin3_1.spn -imark "RootA1:1, RootB1:1, RootC1:1, Pclear:1, Pconsensus:1" -time simtime -run 1000 -seed 1
+java -jar JSPetriNet.jar sim -i bitcoin3_1.spn -imark "RootA1:1, RootB1:1, RootC1:1, Pclear:1, Pconsensus:1" -time 1000 -run 1000 -seed 1
