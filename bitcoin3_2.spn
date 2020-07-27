@@ -25,12 +25,12 @@ exp TminingA (rate = muA)
 exp TminingB (rate = muB)
 exp TminingC (rate = muC)
 
-exp TdelayA_B (rate = lambdaB, guard = #A_B < #B_B)
-exp TdelayA_C (rate = lambdaC, guard = #A_C < #C_C)
-exp TdelayB_A (rate = lambdaA, guard = #B_A < #A_A)
-exp TdelayB_C (rate = lambdaC, guard = #B_C < #C_C)
-exp TdelayC_A (rate = lambdaA, guard = #C_A < #A_A)
-exp TdelayC_B (rate = lambdaB, guard = #C_B < #B_B)
+exp TdelayA_B (rate = lambdaA, guard = #A_B < #B_B)
+exp TdelayA_C (rate = lambdaA, guard = #A_C < #C_C)
+exp TdelayB_A (rate = lambdaB, guard = #B_A < #A_A)
+exp TdelayB_C (rate = lambdaB, guard = #B_C < #C_C)
+exp TdelayC_A (rate = lambdaC, guard = #C_A < #A_A)
+exp TdelayC_B (rate = lambdaC, guard = #C_B < #B_B)
 
 arc TminingA to A_A
 arc TminingB to B_B
@@ -137,8 +137,8 @@ arc TconsensusCtoB to consensusCto_
 arc TconsensusCtoB0 to consensusCto_
 
 muA = 1/10
-muB = 1/10
-muC = 1/10
-lambdaA = 1/0.1
+muB = 1/1
+muC = 1/1
+lambdaA = 1/10
 lambdaB = 1/0.1
 lambdaC = 1/0.1
