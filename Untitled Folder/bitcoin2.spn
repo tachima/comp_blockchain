@@ -1,0 +1,56 @@
+/*
+  bitcoin
+*/
+
+maxblk = 30
+
+place PblkA
+place PconfirmA
+
+place PblkB
+place PconfirmB
+
+exp TminingA (rate = mu1, guard = #PblkA + #PconfirmA < maxblk)
+exp TminingB (rate = mu2, guard = #PblkB + #PconfirmB < maxblk)
+exp TnotifA (rate = lambda1 * #PblkA)
+exp TnotifB (rate = lambda2 * #PblkB)
+
+arc TminingA to PblkA
+arc PblkA to TnotifA
+arc TnotifA to PconfirmA
+
+arc TminingB to PblkB
+arc PblkB to TnotifB
+arc TnotifB to PconfirmB
+
+place Pclear (init = 1)
+
+imm TlooseA (guard = glooseA) {
+  #PblkA = 0;
+  #PconfirmA = 0;
+  #PconfirmB = 0;
+}
+
+imm TlooseB (guard = glooseB) {
+  #PblkB = 0;
+  #PconfirmA = 0;
+  #PconfirmB = 0;
+}
+
+arc Pclear to TlooseA
+arc Pclear to TlooseB
+arc TlooseA to Pclear
+arc TlooseB to Pclear
+
+glooseA = #PconfirmB > #PblkA + #PconfirmA
+glooseB = #PconfirmA > #PblkB + #PconfirmB
+
+mu1 = 1/10
+mu2 = 3/10
+lambda1 = 1/0.1
+lambda2 = 1/0.1
+
+reward A #PblkA + #PconfirmA
+reward B #PblkB + #PconfirmB
+reward winA ifelse(?TlooseA, 0, 1)
+reward winB ifelse(?TlooseB, 0, 1)
