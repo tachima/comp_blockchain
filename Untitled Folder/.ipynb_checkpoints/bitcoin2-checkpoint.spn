@@ -45,9 +45,9 @@ arc TlooseB to Pclear
 glooseA = #PconfirmB > #PblkA + #PconfirmA
 glooseB = #PconfirmA > #PblkB + #PconfirmB
 
-mu1 = 1/10
-mu2 = 3/10
-lambda1 = 1/0.1
+mu1 = 1/5
+mu2 = 1/10
+lambda1 = 1/1
 lambda2 = 1/0.1
 
 reward A #PblkA + #PconfirmA
