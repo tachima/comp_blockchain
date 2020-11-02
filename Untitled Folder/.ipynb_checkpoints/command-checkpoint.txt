@@ -4,3 +4,9 @@ dot -T pdf bitcoin3_1.dot > bitcoin3_1.pdf
 
 //simulation
 java -jar JSPetriNet.jar sim -i bitcoin3_1.spn -imark "RootA1:1, RootB1:1, RootC1:1, Pclear:1, Pconsensus:1" -time 1000 -run 1 -seed 1
+
+//matファイル作成
+sh petri.sh
+
+java -jar JSPetriNet.jar view -i bitcoin2.spn -o tmp.dot
+java -jar JSPetriNet.jar mark -i bitcoin2.spn -o result.mat -g gmark.dot -p "maxblk:30, mu1:1/10, mu2:1/10, lambda1:1/0.1, lambda2:1/0.1"

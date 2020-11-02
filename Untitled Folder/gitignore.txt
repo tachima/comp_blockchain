@@ -1,3 +1,6 @@
+gospn
+*.dot
+*.mat
 .Rproj.user
 .Rhistory
 .RData
